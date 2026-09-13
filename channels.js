@@ -308,16 +308,19 @@
 
   async function resolveScheduled(channel) {
     const box = await sourceBundle(channel);
-    const engine = box.HermitEngine;
-    const catalog = box.HERMIT_CATALOG;
-    const commercials = box.HERMIT_COMMERCIALS || [];
-    if (!engine || !Array.isArray(catalog) || !catalog.length || typeof engine.createDaySchedule !== "function") throw new Error("schedule unavailable");
+    const engine = box.HermitEngine || box.WGNEngine || box.NBCEngine || box.FOXEngine || box.PBSEngine || box.TrumpTvEngine;
+    const catalog = box.HERMIT_CATALOG || box.STAR_LAUNCHER_CATALOG || box.WGN_PROGRAMS || box.NBC_PROGRAMS || box.FOX_PROGRAMS || box.PBS_PROGRAMS || box.TRUMP_TV_CATALOG;
+    const template = box.WGN_DAY_TEMPLATE || box.NBC_DAY_TEMPLATE || box.FOX_DAY_TEMPLATE || box.PBS_DAY_TEMPLATE || box.TRUMP_TV_BLOCKS;
+    const commercials = box.HERMIT_COMMERCIALS || box.STAR_LAUNCHER_COMMERCIALS || box.WGN_COMMERCIALS || box.NBC_COMMERCIALS || [];
+    const hasCatalog = Array.isArray(catalog) ? catalog.length > 0 : catalog && Object.keys(catalog).length > 0;
+    if (!engine || !hasCatalog || typeof engine.createDaySchedule !== "function") throw new Error("schedule unavailable");
     const now = Date.now();
-    const schedule = engine.createDaySchedule(now, catalog);
+    const schedule = template ? engine.createDaySchedule(now, catalog, template) : engine.createDaySchedule(now, catalog);
+    if (!Array.isArray(schedule) || !schedule.length) throw new Error("empty schedule");
     let block = null;
     if (typeof engine.resolve === "function") {
       const state = engine.resolve(now, schedule, commercials);
-      block = state && state.block;
+      block = state && (state.block || state.item);
     }
     if (!block) block = schedule.find(item => now >= item.startsAtMs && now < item.endsAtMs) || schedule[0];
     const item = block && (block.movie || block.program || block.show || block);
