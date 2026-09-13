@@ -16,6 +16,7 @@
     { name:"PBS", slug:"PBS", url:"https://www-infinity4.github.io/PBS/", group:"TV", scheduled:true },
     { name:"TNT", slug:"TNT", url:"https://www-infinity4.github.io/TNT/", group:"TV", scheduled:true },
     { name:"History Channel", slug:"History-Channel", url:"https://www-infinity4.github.io/History-Channel/", group:"TV", scheduled:true },
+    { name:"Disney Vintage", slug:"Disney", url:"https://www-infinity4.github.io/Disney/", group:"TV", scheduled:true },
     { name:"Trump TV", slug:"Trump-TV", url:"https://www-infinity4.github.io/Trump-TV/", group:"TV", scheduled:true },
     { name:"ShopLC", slug:"ShopLC", url:"https://www-infinity4.github.io/ShopLC/", group:"TV", liveLabel:"Deals, gemstones, fashion & home" },
     { name:"StarQuest", slug:"TV-Database", url:"https://www-infinity4.github.io/TV-Database/", group:"TV", liveLabel:"Classic TV & movies" },
