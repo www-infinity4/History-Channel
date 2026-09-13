@@ -351,9 +351,11 @@
       const channel = channels.find(item => item.slug === node.dataset.liveSlug);
       if (!channel) return;
       const live = await nowPlaying(channel);
-      node.textContent = live.title || "";
+      const cleanTitle = String(live.title || "").replace(/\s*\((?:full (?:episode|movie|broadcast|documentary))\)\s*$/i, "").trim();
+      node.textContent = cleanTitle;
       const card = node.closest("a");
-      if (card && live.art) card.style.setProperty("--live-art", `url("${String(live.art).replace(/"/g, "%22")}")`);
+      const art = live.art || `${channel.url}assets/channel-share.svg`;
+      if (card) card.style.setProperty("--live-art", `url("${String(art).replace(/"/g, "%22")}")`);
       node.dataset.liveState = "ready";
     }));
   }
