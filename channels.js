@@ -17,8 +17,8 @@
     { name:"TNT", slug:"TNT", url:"https://www-infinity4.github.io/TNT/", group:"TV", scheduled:true },
     { name:"History Channel", slug:"History-Channel", url:"https://www-infinity4.github.io/History-Channel/", group:"TV", scheduled:true },
     { name:"Trump TV", slug:"Trump-TV", url:"https://www-infinity4.github.io/Trump-TV/", group:"TV", scheduled:true },
-    { name:"ShopLC", slug:"ShopLC", url:"https://www-infinity4.github.io/ShopLC/", group:"TV", liveLabel:"Shop LC Live — deals, gemstones, fashion & home" },
-    { name:"StarQuest", slug:"TV-Database", url:"https://www-infinity4.github.io/TV-Database/", group:"TV", liveLabel:"StarQuest classic TV & movies" },
+    { name:"ShopLC", slug:"ShopLC", url:"https://www-infinity4.github.io/ShopLC/", group:"TV", liveLabel:"Deals, gemstones, fashion & home" },
+    { name:"StarQuest", slug:"TV-Database", url:"https://www-infinity4.github.io/TV-Database/", group:"TV", liveLabel:"Classic TV & movies" },
     { name:"Astraflix", slug:"Astraflix", url:"https://www-infinity4.github.io/Astraflix/", group:"SYNC" },
     { name:"Syncord", slug:"Syncord", url:"https://www-infinity4.github.io/Syncord/", group:"SYNC" },
     { name:"Vintech", slug:"Vintech", url:"https://www-infinity4.github.io/Vintech/", group:"SYNC" },
@@ -27,7 +27,7 @@
     { name:"Animasync", slug:"Animasync", url:"https://www-infinity4.github.io/Animasync/", group:"SYNC" }
   ];
 
-  const STYLE_ID = "infinity-shared-network-style-v3";
+  const STYLE_ID = "infinity-shared-network-style-v4";
   const SOURCE_CACHE = new Map();
   const BLOCKED_GUIDE_TITLES = /galaxy of terror|chopping mall|fatal combat|hologram man|breakfast of champions|eulogy|blitz|the fanatic|the presence|monsters of man|wanted|zodiac|payback|\\bava\\b|assault on precinct 13|the fog|\\brage\\b|a good marriage|return of the living dead|michael collins|deathtrap/i;
   let guideObserver = null;
@@ -70,13 +70,16 @@
       .infinity-wallet-panel{position:absolute;right:0;bottom:calc(100% + 8px);min-width:230px;padding:12px;border:1px solid rgba(255,255,255,.2);border-radius:14px;background:rgba(5,8,16,.98);box-shadow:0 18px 50px rgba(0,0,0,.55);color:#fff;z-index:2147483000;font:600 13px/1.4 system-ui}
       .infinity-wallet-panel[hidden]{display:none}.infinity-wallet-panel strong{display:block;font-size:24px;color:#f5c451}.infinity-wallet-panel small{display:block;margin-top:5px;opacity:.78}
       .infinity-created-directory{margin:28px auto;padding:18px;width:min(1180px,calc(100% - 24px));border:1px solid rgba(255,255,255,.14);border-radius:20px;background:rgba(6,10,20,.9);color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-      .infinity-live-heading{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:12px}.infinity-live-heading strong{font-size:22px}.infinity-live-heading span{font-size:12px;opacity:.72}
-      .channel-directory nav.infinity-live-guide{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px!important;align-items:stretch}
-      .infinity-live-guide a{display:flex!important;flex-direction:column;gap:5px;padding:12px!important;border:1px solid rgba(255,255,255,.14)!important;border-radius:14px!important;background:rgba(255,255,255,.055)!important;color:#fff!important;text-decoration:none!important;min-width:0}
-      .infinity-live-guide a[aria-current="page"]{outline:2px solid #f5c451;background:rgba(245,196,81,.12)!important}
-      .infinity-live-guide .infinity-channel-name{font-weight:900}.infinity-live-guide small{line-height:1.3;opacity:.8;white-space:normal}.infinity-live-guide small[data-live-state="ready"]{opacity:1;color:#f5c451}
+      .infinity-live-heading{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:16px}.infinity-live-heading strong{font:800 24px/1.1 Georgia,serif}.infinity-live-heading span{font-size:12px;opacity:.72}
+      .channel-directory nav.infinity-live-guide{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px!important;align-items:stretch}
+      .infinity-live-guide a{position:relative;isolation:isolate;overflow:hidden;display:flex!important;min-width:0;min-height:132px;padding:15px!important;flex-direction:column;justify-content:flex-end;gap:9px;border:1px solid rgba(246,197,107,.28)!important;border-radius:18px!important;background-color:#151515!important;background-image:linear-gradient(180deg,rgba(8,8,8,.1),rgba(8,8,8,.93) 78%),var(--live-art)!important;background-size:cover!important;background-position:center!important;color:#fff!important;text-decoration:none!important;box-shadow:0 14px 34px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+      .infinity-live-guide a:hover,.infinity-live-guide a:focus-visible{transform:translateY(-2px);border-color:#f5c451!important;box-shadow:0 18px 42px rgba(0,0,0,.46),0 0 0 1px rgba(245,196,81,.22);outline:none}
+      .infinity-live-guide a[aria-current="page"]{outline:2px solid #f5c451;background-color:#24190a!important}
+      .infinity-live-guide .infinity-channel-name{align-self:flex-start;padding:5px 8px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(0,0,0,.58);font-size:10px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}
+      .infinity-live-guide [data-live-slug]{font:800 clamp(17px,2.2vw,22px)/1.08 Georgia,serif;color:#fff;text-shadow:0 2px 12px #000;white-space:normal}
+      .infinity-live-guide [data-live-slug]:empty{display:none}
       .infinity-guide-divider{grid-column:1/-1;margin-top:8px;padding:9px 2px 2px;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#f5c451}
-      @media(max-width:640px){.infinity-auto-menu>summary .menu-label{display:none}.infinity-auto-menu nav{width:min(92vw,330px)}.channel-directory nav.infinity-live-guide{grid-template-columns:1fr 1fr}.infinity-live-guide a{padding:10px!important}.infinity-live-heading{align-items:start;flex-direction:column}}
+      @media(max-width:640px){.infinity-auto-menu>summary .menu-label{display:none}.infinity-auto-menu nav{width:min(92vw,330px)}.channel-directory nav.infinity-live-guide{grid-template-columns:1fr 1fr}.infinity-live-guide a{min-height:118px;padding:11px!important}.infinity-live-guide [data-live-slug]{font-size:17px}.infinity-live-heading{align-items:start;flex-direction:column}}
     `;
     document.head.appendChild(style);
   }
@@ -253,7 +256,7 @@
       const footer = document.querySelector("footer");
       if (footer) footer.parentNode.insertBefore(section, footer); else document.body.appendChild(section);
     }
-    section.innerHTML = '<div class="infinity-live-heading"><strong>Live now</strong><span>Other channels · times shown in your local time</span></div><nav class="infinity-live-guide" aria-label="Live channel guide"></nav>';
+    section.innerHTML = '<div class="infinity-live-heading"><strong>Choose a channel</strong><span>Tap a title to watch</span></div><nav class="infinity-live-guide" aria-label="Channel guide"></nav>';
     renderGuideShell(section.querySelector("nav"));
     return section;
   }
@@ -264,10 +267,10 @@
     const syncChannels = channels.filter(channel => channel.group === "SYNC");
     nav.innerHTML = tv.map(channel => {
       const current = channel.slug.toLowerCase() === active.toLowerCase();
-      return `<a${current?' aria-current="page"':''} href="${channel.url}"><span class="infinity-channel-name">${esc(channel.name)}</span><small data-live-slug="${esc(channel.slug)}">Checking live program…</small></a>`;
+      return `<a${current?' aria-current="page"':''} href="${channel.url}"><span class="infinity-channel-name">${esc(channel.name)}</span><strong data-live-slug="${esc(channel.slug)}"></strong></a>`;
     }).join("") + `<div class="infinity-guide-divider">Sync channels</div>` + syncChannels.map(channel => {
       const current = channel.slug.toLowerCase() === active.toLowerCase();
-      return `<a${current?' aria-current="page"':''} href="${channel.url}"><span class="infinity-channel-name">${esc(channel.name)}</span><small data-live-state="ready">SYNC CINEMA · Open paired film + music</small></a>`;
+      return `<a${current?' aria-current="page"':''} href="${channel.url}"><span class="infinity-channel-name">${esc(channel.name)}</span><strong data-live-slug="${esc(channel.slug)}"></strong></a>`;
     }).join("");
   }
 
@@ -320,18 +323,23 @@
     const item = block && (block.movie || block.program || block.show || block);
     const title = item && (item.title || item.name);
     if (!title) throw new Error("title unavailable");
-    return {title,startsAtMs:block.startsAtMs,endsAtMs:block.endsAtMs,updatedAt:Date.now()};
+    const art = item.posterUrl || (item.videoId ? `https://i.ytimg.com/vi/${item.videoId}/hqdefault.jpg` : `${channel.url}assets/channel-share.svg`);
+    return {title,art,startsAtMs:block.startsAtMs,endsAtMs:block.endsAtMs,updatedAt:Date.now()};
   }
 
   async function nowPlaying(channel) {
-    if (channel.group === "SYNC") return {title:"SYNC CINEMA · Open paired film + music"};
     const presence = storedPresence(channel.slug);
     if (presence) return presence;
-    if (channel.liveLabel) return {title:channel.liveLabel};
+    if (channel.slug.toLowerCase() === currentSlug().toLowerCase()) {
+      const currentTitle = document.querySelector("#nowTitle,[data-now-title]");
+      const title = currentTitle && !/loading|please wait/i.test(currentTitle.textContent || "") ? currentTitle.textContent.trim() : "";
+      if (title) return {title};
+    }
     if (channel.scheduled) {
       try { return await resolveScheduled(channel); } catch (_) {}
     }
-    return {title:"Live channel · Open to watch"};
+    if (channel.liveLabel) return {title:channel.liveLabel.replace(/^live\s*[—·:-]*\s*/i, "")};
+    return {title:""};
   }
 
   async function refreshLiveGuide() {
@@ -340,8 +348,9 @@
       const channel = channels.find(item => item.slug === node.dataset.liveSlug);
       if (!channel) return;
       const live = await nowPlaying(channel);
-      const until = live.endsAtMs ? ` · until ${formatLocalTime(live.endsAtMs)}` : "";
-      node.textContent = `LIVE · ${live.title}${until}`;
+      node.textContent = live.title || "";
+      const card = node.closest("a");
+      if (card && live.art) card.style.setProperty("--live-art", `url("${String(live.art).replace(/"/g, "%22")}")`);
       node.dataset.liveState = "ready";
     }));
   }
