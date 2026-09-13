@@ -168,7 +168,7 @@
     els.title.textContent = state.block.movie.title;
     setProgramArt(state.block.movie);
     els.programTime.textContent = `${formatStationTime(state.block.startsAtMs)}–${formatStationTime(state.block.endsAtMs)}`;
-    els.position.textContent = mode === "live" ? "Synced with the live TNT schedule" : `${formatDuration(state.blockElapsed)} from start`;
+    els.position.textContent = mode === "live" ? "Synced with the History Channel schedule" : `${formatDuration(state.blockElapsed)} from start`;
     els.remaining.textContent = `${formatDuration(state.blockRemaining)} until next scheduled documentary`;
     els.progress.style.width = `${Math.min(100, (state.blockElapsed / state.block.blockSeconds) * 100)}%`;
     document.querySelectorAll(".guide-row").forEach(row => row.classList.toggle("current", row.dataset.id === state.block.id));
@@ -232,7 +232,7 @@
 
   async function shareChannel() {
     const title = els.title.textContent && !els.title.textContent.includes("Loading") ? els.title.textContent : "HISTORY";
-    const share = { title:`${title} · TNT`, text:`Watch ${title} on the live History documentary channel.`, url:location.href };
+    const share = { title:`${title} · History Channel`, text:`Watch ${title} on the live History documentary channel.`, url:location.href };
     try {
       if (navigator.share) {
         await navigator.share(share);
